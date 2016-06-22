@@ -1,0 +1,4 @@
+void mini(void)
+{
+	
+}

@@ -10,16 +10,17 @@
 
 int main()
 {
-	 login();
+	login();
 	return 0;
 }
-void login(void)
+login()
 {
 	FILE *fp;
 	pUser = (struct user *) malloc (sizeof(struct user));
 	int choice;
 	char userAccount[20];
 	char passWord[20];
+	char c;
 	printf("choose your costumer type\n");
 	printf("---------------------------------\n");
 	printf ("1.registered user\n2.new user\n");
@@ -60,8 +61,13 @@ void login(void)
 					scanf("%s",pUser->useraccount);
 					printf("enter the password\n");
 					scanf("%s",pUser->password);
-					f
-				}
+					fwrite(pUser,sizeof(struct user ),1,fp);
+					printf ("Add new account ( y/n)\n");
+					scanf("%c",&c);
+				}while(c=='y'||c == 'Y');
+				//break;
 	}
+	free(pUser);
+	fclose(fp);
 }
 
