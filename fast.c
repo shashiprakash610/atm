@@ -1,6 +1,4 @@
-#include<stdio.h>
-
-main()
+void fast(void)
 {	
 	FILE *f4;
 	int amount;
@@ -40,7 +38,7 @@ main()
 				else
 					printf("insufficient fund\n");
 				break;
-		case 4: printf("500");
+		case 4: 
 				if(amount >= 10000)
 				{
 					printf("collect your money\n");

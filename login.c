@@ -8,6 +8,20 @@
 	char password [20];
 }*pUser;
 
+struct information
+{   
+    char name[20];
+    char fathername[20];
+	char address [40];
+	char landmark[10];
+	char district[10];
+	char state [10];
+	int pin;
+	int phone;
+	
+}iNfo;
+
+
 int main()
 {
 	login();
@@ -15,7 +29,7 @@ int main()
 }
 login()
 {
-	FILE *fp;
+	FILE *fp,*fp1;
 	pUser = (struct user *) malloc (sizeof(struct user));
 	int choice;
 	char userAccount[20];
@@ -48,7 +62,7 @@ login()
 				   printf("password match");
 				}
 			}	break;	
-		case 2:	do{
+		case 2:	
 					if((fp = fopen("file.dat", "a+")) == NULL)
 					{
 						if((fp = fopen("file.dat","w+")) == NULL)
@@ -62,12 +76,32 @@ login()
 					printf("enter the password\n");
 					scanf("%s",pUser->password);
 					fwrite(pUser,sizeof(struct user ),1,fp);
-					printf ("Add new account ( y/n)\n");
-					scanf("%c",&c);
-				}while(c=='y'||c == 'Y');
-				//break;
+					fclose(fp);
+					fp1 = fopen("info.dat","a");
+					getchar();
+					printf("enter name\n");
+					gets(iNfo.name);
+					printf("enter father's name\n");
+					gets(iNfo.fathername);
+					printf("eneter the address \n ");
+					gets(iNfo.address);
+					printf("enter the landmark\n");
+					gets(iNfo.landmark);
+					printf("enter the district\n");
+					scanf(" %s", iNfo.district);
+					printf("enter the state\n");
+					scanf("%s", iNfo.state);
+					printf("enter the pin code\n");
+					scanf("%d", &iNfo.pin);
+					printf("enter the phone number\n");
+					scanf("%d", &iNfo.phone);
+					fprintf(fp1,"\n\n%s \n%s \n%s \n%s \n%s \n%s \n%d ", iNfo.name, iNfo.fathername, iNfo.address,  																iNfo.landmark, iNfo.district, iNfo.state, iNfo.pin);
+					fprintf(fp1,"%d", iNfo.phone);
+					fclose(fp1);
+					break;
+
 	}
 	free(pUser);
-	fclose(fp);
+
 }
 

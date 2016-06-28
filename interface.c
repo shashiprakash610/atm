@@ -18,7 +18,7 @@ main()
 			switch(i)
 				{
 					case 1: withdraw();
-					//break;
+					break;
 					case 2:fast();
 					break;
 					case 3:
@@ -33,7 +33,7 @@ main()
 					break;
 					case 8:
 					break;
-					printf("\n\ndo you want to continue (Y\N)\n\n");
+					printf("do you want to continue (y or N)\n");
 					scanf("%c",&c);
 				}
 		}
