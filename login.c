@@ -34,7 +34,6 @@ login()
 	int choice;
 	char userAccount[20];
 	char passWord[20];
-	char c;
 	printf("choose your costumer type\n");
 	printf("---------------------------------\n");
 	printf ("1.registered user\n2.new user\n");
@@ -55,12 +54,12 @@ login()
 			printf("passWord");
 			scanf("%20s",passWord);
 			while(fread (pUser,sizeof(pUser),1,fp) == 1)
-			if(strcmp(pUser->useraccount,userAccount) == 1)
+			if(strcmp(pUser->useraccount,userAccount) == 0)
 			{
-				if(strcmp(pUser->password,passWord) == 1)
-				{
+				//if(strcmp(pUser->password,passWord) == 0)
+				//{
 				   printf("password match");
-				}
+				//}
 			}	break;	
 		case 2:	
 					if((fp = fopen("file.dat", "a+")) == NULL)
@@ -77,7 +76,7 @@ login()
 					scanf("%s",pUser->password);
 					fwrite(pUser,sizeof(struct user ),1,fp);
 					fclose(fp);
-					fp1 = fopen("info.dat","a");
+					fp1 = fopen("info.txt","a");
 					getchar();
 					printf("enter name\n");
 					gets(iNfo.name);
@@ -95,8 +94,8 @@ login()
 					scanf("%d", &iNfo.pin);
 					printf("enter the phone number\n");
 					scanf("%d", &iNfo.phone);
-					fprintf(fp1,"\n\n%s \n%s \n%s \n%s \n%s \n%s \n%d ", iNfo.name, iNfo.fathername, iNfo.address,  																iNfo.landmark, iNfo.district, iNfo.state, iNfo.pin);
-					fprintf(fp1,"%d", iNfo.phone);
+					fprintf(fp1,"%s/%s/%s/%s/%s/%s/%d \n ", iNfo.name, iNfo.fathername, iNfo.address,  																iNfo.landmark, iNfo.district, iNfo.state, iNfo.pin);
+					fprintf(fp1,"%d\n\n", iNfo.phone);
 					fclose(fp1);
 					break;
 
